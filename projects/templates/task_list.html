@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Management</title>
+</head>
+<body>
+    <h1>Task Management</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.get_status_display }}</td>
+                <td>
+                    {% if task.status == 'new' %}
+                    <a href="{% url 'update_status' task.pk 'open' %}">Open</a>
+                    <a href="{% url 'update_status' task.pk 'rejected' %}">Reject</a>
+                    {% elif task.status == 'open' %}
+                    <a href="{% url 'update_status' task.pk 'fixed' %}">Fixed</a>
+                    {% elif task.status == 'fixed' %}
+                    <a href="{% url 'update_status' task.pk 'test_passed' %}">Test Passed</a>
+                    <a href="{% url 'update_status' task.pk 'reopen' %}">Reopen</a>
+                    {% elif task.status == 'test_passed' %}
+                    <a href="{% url 'update_status' task.pk 'closed' %}">Close</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
