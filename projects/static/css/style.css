@@ -1,5 +1,6 @@
 /* static/css/style.css */
 
+/* General Styles (same as before) */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -9,38 +10,55 @@ body {
     line-height: 1.6;
 }
 
-h1 {
-    text-align: center;
-    margin-top: 20px;
-    color: #333;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul li {
+.container {
+    max-width: 800px;
+    margin: 20px auto;
     background-color: #fff;
-    margin: 10px auto;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
 }
 
-ul li h2 {
-    margin: 0 0 10px;
+h1 {
+    text-align: center;
     color: #007bff;
+    margin-bottom: 20px;
 }
 
-ul li p {
-    margin: 5px 0;
+/* Table Styles */
+.project-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-ul li a {
+.project-table th, .project-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.project-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.project-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.project-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.project-table td {
+    vertical-align: top;
+}
+
+/* Link Styles (same as before) */
+a {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 20px;
     padding: 10px 15px;
     background-color: #007bff;
     color: #fff;
@@ -49,6 +67,23 @@ ul li a {
     transition: background-color 0.3s ease;
 }
 
-ul li a:hover {
+a:hover {
     background-color: #0056b3;
+}
+
+/* Table Header Styles */
+.project-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    font-size: 16px; /* Adjust the font size here */
+    padding: 8px;
+    text-align: left;
+}
+
+.project-table td {
+    background-color: #f2f2f2;
+    font-weight: normal;
+    font-size: 14px; /* Adjust the font size here */
+    padding: 8px;
+    text-align: left;
 }

@@ -10,21 +10,35 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Project List</h1>
+    <div class="container">
+        <h1>Project List</h1>
 
-    <!-- Display each project in the queryset -->
-    <ul>
-        {% for project in object_list %}
-            <li>
-                <h2>{{ project.name }}</h2>
-                <p>{{ project.description }}</p>
-                <p><strong>Start Date:</strong> {{ project.start_date }}</p>
-                <p><strong>End Date:</strong> {{ project.end_date }}</p>
-                <a href="{% url 'project_detail' project.pk %}">View Details</a>
-            </li>
-        {% empty %}
-            <li>No projects available.</li>
-        {% endfor %}
-    </ul>
+        <table class="project-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in object_list %}
+                    <tr>
+                        <td>{{ project.name }}</td>
+                        <td>{{ project.description }}</td>
+                        <td>{{ project.start_date }}</td>
+                        <td>{{ project.end_date }}</td>
+                        <td><a href="{% url 'project_detail' project.pk %}">View Details</a></td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No projects available.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
