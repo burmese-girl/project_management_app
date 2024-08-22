@@ -13,24 +13,35 @@
     <div class="container">
         <h1>{{ project.name }}</h1>
 
-        <p><strong>Description:</strong></p>
-        <p>{{ project.description }}</p>
-
+        <p><strong>Description:</strong> {{ project.description }}</p>
         <p><strong>Start Date:</strong> {{ project.start_date }}</p>
         <p><strong>End Date:</strong> {{ project.end_date }}</p>
 
         <h2>Tasks</h2>
-        <ul>
-            {% for task in tasks.all %}
-                <li>
-                    <p><strong>Title:</strong>{{ task.title }}</p>
-                    <p><strong>Status:</strong> {{ task.status }}</p>
-                    <p><strong>Due Date:</strong> {{ task.due_date }}</p>
-                </li>
-            {% empty %}
-                <li>No tasks available for this project.</li>
-            {% endfor %}
-        </ul>
+        <table class="task-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.description }}</td>
+                        <td>{{ task.due_date }}</td>
+                        <td>{{ task.status }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">No tasks available for this project.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
         <a href="{% url 'project_list' %}">Back to Project List</a>
     </div>

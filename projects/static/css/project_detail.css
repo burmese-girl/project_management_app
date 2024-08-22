@@ -1,6 +1,6 @@
 /* static/css/style.css */
 
-/* General Styles */
+/* General Styles (same as before) */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -19,43 +19,43 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Heading Styles */
 h1 {
     text-align: center;
     color: #007bff;
     margin-bottom: 20px;
 }
 
-/* Paragraph Styles */
-p {
-    margin: 10px 0;
-    font-size: 16px;
+/* Table Styles */
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-p strong {
+.task-table th, .task-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.task-table th {
+    background-color: #f2f2f2;
     font-weight: bold;
 }
 
-/* Task List Styles */
-h2 {
-    margin-top: 30px;
-    color: #333;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul li {
+.task-table tr:nth-child(even) {
     background-color: #f9f9f9;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 3px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Link Styles */
+.task-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.task-table td {
+    vertical-align: top;
+}
+
+/* Link Styles (same as before) */
 a {
     display: inline-block;
     margin-top: 20px;
