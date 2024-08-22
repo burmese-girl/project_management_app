@@ -1,0 +1,65 @@
+<!-- templates/projects/dashboard.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Status Dashboard</h1>
+
+        <canvas id="taskStatusChart" width="400" height="200"></canvas>
+
+        <script>
+            var ctx = document.getElementById('taskStatusChart').getContext('2d');
+            var taskStatusChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['New', 'In Progress', 'Completed', 'Fixed', 'Test Passed' ],
+                    datasets: [{
+                        label: 'Number of Tasks',
+                        data: [
+                            {{ tasks_by_status.new }},
+                            {{ tasks_by_status.in_progress }},
+                            {{ tasks_by_status.closed }},
+                            {{ tasks_by_status.fixed }},
+                            {{ tasks_by_status.test_passed }},
+
+                        ],
+                        backgroundColor: [
+                            'pink',
+                            'red',
+                            'green',
+                            'purple',
+                            '#0fee5b',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(54, 182, 235, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+
+        <a href="{% url 'project_list' %}">Back to Project List</a>
+    </div>
+</body>
+</html>

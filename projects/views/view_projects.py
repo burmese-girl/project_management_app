@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Task,Project
+from ..models import Task,Project
 from django.views.generic import ListView, DetailView
 
 def task_list(request):

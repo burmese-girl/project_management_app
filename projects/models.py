@@ -6,7 +6,7 @@ STATUS_CHOICES = [
     ('open', 'Open'),
     ('fixed', 'Fixed'),
     ('rejected', 'Rejected'),
-    ('reopen', 'Reopen'),
+    ('in_progress', 'In Progress'),
     ('closed', 'Closed'),
     ('test_passed', 'Test Passed'),
 ]
