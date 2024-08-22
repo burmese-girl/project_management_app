@@ -21,8 +21,12 @@
 
         <h2>Tasks</h2>
         <ul>
-            {% for task in project.tasks.all %}
-                <li>{{ task.name }} - {{ task.status }}</li>
+            {% for task in tasks.all %}
+                <li>
+                    <p><strong>Title:</strong>{{ task.title }}</p>
+                    <p><strong>Status:</strong> {{ task.status }}</p>
+                    <p><strong>Due Date:</strong> {{ task.due_date }}</p>
+                </li>
             {% empty %}
                 <li>No tasks available for this project.</li>
             {% endfor %}
