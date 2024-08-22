@@ -9,6 +9,7 @@ def dashboard(request):
         'closed': Task.objects.filter(status='closed').count(),
         'fixed': Task.objects.filter(status='fixed').count(),
         'test_passed':Task.objects.filter(status='test_passed').count(),
+        'rejected':Task.objects.filter(status='rejected').count(),
     }
 
     return render(request, 'projects/dashboard.html', {'tasks_by_status': tasks_by_status})
