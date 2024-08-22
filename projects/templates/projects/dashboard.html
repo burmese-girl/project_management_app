@@ -7,13 +7,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>Task Status Dashboard</h1>
 
+        <!-- Chart.js Canvas -->
         <canvas id="taskStatusChart" width="400" height="200"></canvas>
 
         <script>
@@ -21,7 +22,7 @@
             var taskStatusChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['New', 'In Progress', 'Rejected' , 'Fixed', 'Test Passed', 'Completed' ],
+                    labels: ['New', 'In Progress', 'Rejected', 'Fixed', 'Test Passed', 'Completed'],
                     datasets: [{
                         label: 'Number of Tasks',
                         data: [
@@ -31,7 +32,6 @@
                             {{ tasks_by_status.fixed }},
                             {{ tasks_by_status.test_passed }},
                             {{ tasks_by_status.closed }},
-
                         ],
                         backgroundColor: [
                             'lightgray',
@@ -44,12 +44,15 @@
                         borderColor: [
                             'rgba(255, 99, 132, 1)',
                             'rgba(54, 162, 235, 1)',
-                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 99, 132, 1)',
                             'rgba(75, 192, 192, 1)',
                             'rgba(54, 162, 235, 1)',
-                            'rgba(54, 182, 235, 1)',
+                            'rgba(75, 192, 192, 1)',
                         ],
-                        borderWidth: 1
+                        borderWidth: 1,
+                        barThickness: 40, // Adjust this value to make the bars thinner
+                        maxBarThickness: 80, // Optional: Maximum bar thickness
+                        minBarLength: 2, // Optional: Minimum bar length
                     }]
                 },
                 options: {
@@ -61,6 +64,42 @@
                 }
             });
         </script>
+
+        <!-- Task Status Table -->
+        <table class="dashboard-table">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Number of Tasks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>New</td>
+                    <td>{{ tasks_by_status.new }}</td>
+                </tr>
+                <tr>
+                    <td>In Progress</td>
+                    <td>{{ tasks_by_status.in_progress }}</td>
+                </tr>
+                <tr>
+                    <td>Rejected</td>
+                    <td>{{ tasks_by_status.rejected }}</td>
+                </tr>
+                <tr>
+                    <td>Fixed</td>
+                    <td>{{ tasks_by_status.fixed }}</td>
+                </tr>
+                <tr>
+                    <td>Test Passed</td>
+                    <td>{{ tasks_by_status.test_passed }}</td>
+                </tr>
+                <tr>
+                    <td>Completed</td>
+                    <td>{{ tasks_by_status.closed }}</td>
+                </tr>
+            </tbody>
+        </table>
 
         <a href="{% url 'project_list' %}">Back to Project List</a>
     </div>
