@@ -7,7 +7,9 @@
 
 # Prequesties 
 git clone git@github.com:burmese-girl/django_music_app.git
+
 pip install -r requirements.tx
+
 python manage.py runserver
 
 
