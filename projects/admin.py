@@ -12,3 +12,5 @@ class TaskAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Task,TaskAdmin)
+admin.site.register(Project)
+admin.site.register(TeamMember)

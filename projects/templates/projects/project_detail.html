@@ -1,0 +1,30 @@
+<!-- templates/projects/project_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project List</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Project List</h1>
+
+    <!-- Display each project in the queryset -->
+    <ul>
+        {% for project in object_list %}
+            <li>
+                <h2>{{ project.name }}</h2>
+                <p>{{ project.description }}</p>
+                <p><strong>Start Date:</strong> {{ project.start_date }}</p>
+                <p><strong>End Date:</strong> {{ project.end_date }}</p>
+                <a href="{% url 'project_detail' project.pk %}">View Details</a>
+            </li>
+        {% empty %}
+            <li>No projects available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
