@@ -87,3 +87,27 @@ a:hover {
     padding: 8px;
     text-align: left;
 }
+
+
+.save-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #0056b3;
+}
+
+input {
+ background-color:white;
+    font-weight: normal;
+    font-size: 14px; /* Adjust the font size here */
+    padding: 4px;
+    text-align: left;
+}
