@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from ..models import Task
 
+@login_required
 def dashboard(request):
     # Group tasks by status
     tasks_by_status = {
