@@ -19,6 +19,9 @@ def register(request):
     return render(request, 'users/register.html', {'form': form})
 
 def logout_user(request):
-    logout(request)
+    if request.user.is_authenticated:
+        logout(request)
+    else:
+        return redirect('login')
     messages.success(request, "You have been logged out ....")
     return render(request, 'users/logout.html', {})

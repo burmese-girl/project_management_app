@@ -2,24 +2,27 @@
 <html lang="en">
 <head>
     {% load static %}
+    {% load widget_tweaks %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project List</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/users.css' %}">
 </head>
 <body>
     <div class="container">
-        <form action="" method="post">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In</legend>
-                {{ form }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Login</button>
-            </div>
-        </form>
-        <small>
+        <div class="form-container">
+            <form action="" method="post">
+                {% csrf_token %}
+    
+                <h2>Login</h2>
+                
+                {% render_field form.username placeholder="User Name" class+="form-control" %}
+                {% render_field form.password placeholder="Password" class+="form-control"%}
+    
+                <button class="submit-button" type="submit">Login</button>
+            </form>
+        </div>
+        <small class="register-text">
             Already have an Account? <a class="" href="{% url 'register' %}">Sign Up Now</a>
         </small>
     </div>
