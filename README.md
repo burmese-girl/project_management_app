@@ -24,7 +24,7 @@ A powerful and easy-to-use project management application built with Django, des
 ### Prerequisites
 
 - Python 3.10+
-- Django 5.1
+- Django 5.0.5
 - Git
 
 ### Clone the Repository
