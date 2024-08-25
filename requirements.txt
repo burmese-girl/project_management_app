@@ -84,4 +84,4 @@ stripe==9.5.0
 django-rosetta
 django-storages
 python-barcode
-
+django-widget-tweaks

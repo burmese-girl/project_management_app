@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load widget_tweaks %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <link rel="stylesheet" href="{% static 'css/users.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <form action="" method="post">
+                {% csrf_token %}
+                    <!-- {{ form }} -->
+                <h2>Sign Up</h2>
+
+                {% render_field form.username placeholder="User Name" class+="form-control" %}
+                {% render_field form.email placeholder="Email Address" class+="form-control"%}
+                {% render_field form.password1 placeholder="Password" class+="form-control"%}
+                {% render_field form.password2 placeholder="Confirm Password" class+="form-control"%}            
+
+                <button class="submit-button" type="submit">Sign Up</button>
+            </form>
+        </div>
+        <small class="login-text">
+            Already have an Account? <a class="" href="{% url 'login' %}">Sign In</a>
+        </small>
+    </div>
+</body>
+</html>

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from ..models import Task,Project
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
+from ..models import Task, Project
 
 def task_list(request):
     tasks = Task.objects.all()
@@ -13,12 +14,11 @@ def update_status(request, pk, status):
     task.save()
     return redirect('task_list')
 
-
-class ProjectListView(ListView):
+class ProjectListView(LoginRequiredMixin, ListView):
     model = Project
     template_name = 'projects/project_list.html'
 
-class ProjectDetailView(DetailView):
+class ProjectDetailView(LoginRequiredMixin, DetailView):
     model = Project
     template_name = 'projects/project_detail.html'
     context_object_name = 'project'
@@ -28,8 +28,7 @@ class ProjectDetailView(DetailView):
         context['tasks'] = self.object.task_set.all()
         return context
 
-
-class ProjectUpdateView(View):
+class ProjectUpdateView(LoginRequiredMixin, View):
     template_name = 'projects/project_update.html'
 
     def get(self, request, pk):
