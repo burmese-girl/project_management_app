@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load widget_tweaks %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'css/users.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <div class="profile_section">
+            <img class="profile_image" src="{{ user.profile.profile_picture.url }}">
+            <div class="profile_info">
+                <h2 class="profile-name"><strong>Username:</strong> {{ user.username }}</h2>
+                <p class="profile-contact"><strong>Email:</strong> {{ user.email }}</p>
+                <p class="text-secondary"><strong>Bio:</strong> {% if user.profile.bio %} {{ user.profile.bio }} {% else %} no bio {% endif %}</p>
+            </div>
+        </div>
+        <hr>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>Profile Info</h2>
+
+            <label for="">Username</label>
+            {% render_field user_form.username placeholder="User Name" class+="form-control" %}<br>
+
+            <label for="">Email</label>
+            {% render_field user_form.email placeholder="Email Address" class+="form-control"%}
+
+            <div>{% render_field profile_form.profile_picture placeholder="" class+="form-control" %}</div><br>
+            <label for="">Bio</label>
+            {% render_field profile_form.bio placeholder="Bio" class+="form-control"%}
+
+            <button class="submit-button" type="submit">Update</button>
+        </form>
+    </div>
+</body>
+</html>
