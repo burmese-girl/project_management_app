@@ -25,6 +25,10 @@ h1 {
     margin-bottom: 20px;
 }
 
+h2 {
+    color: #007bff;
+}
+
 /* Table Styles */
 .project-table {
     width: 100%;

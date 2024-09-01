@@ -1,0 +1,19 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block page_title %} {% endblock page_title %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    {% block extra_resources %} {% endblock extra_resources %}
+</head>
+<body>
+    {% block content %} {% endblock content %}
+</body>
+</html>

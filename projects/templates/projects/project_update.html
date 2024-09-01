@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Project</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block page_title %} <title>Edit Project</title> {% endblock page_title %}
+
+{% block content %}
     <div class="container">
         <h1>Edit Project</h1>
 
@@ -34,5 +29,4 @@
 
         <a href="{% url 'project_list' %}">Back to Project List</a>
     </div>
-</body>
-</html>
+{% endblock content %}
