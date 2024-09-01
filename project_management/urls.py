@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path,include, re_path
 from django.views.generic import RedirectView
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 from projects.views import view_projects, view_dashboard, view_user
 
 
@@ -33,5 +35,9 @@ urlpatterns = [
     path('register/', view_user.register, name='register'),
     path('login/', view_user.login_user.as_view(), name='login'),
     path('logout/', view_user.logout_user, name='logout'),
+    path('profile/', view_user.profile, name='profile'),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

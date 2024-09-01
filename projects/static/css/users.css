@@ -44,5 +44,23 @@ input {
     margin: 20px 120px;
 }
 
-/* Register Page */
+/* Profile page */
 
+.profile_image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* border: 5px solid #333; */
+}
+
+.profile_section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile_info{
+    margin-left: 100px;
+}
