@@ -1,16 +1,15 @@
 <!-- templates/projects/dashboard.html -->
+{% extends 'base.html' %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+{% block page_title %} <title>Dashboard</title> {% endblock page_title %}
+
+{% block extra_resources %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+{% endblock extra_resources %}
+
+{% block content %}
     <div class="container">
         <h1>Task Status Dashboard</h1>
 
@@ -103,5 +102,4 @@
 
         <a href="{% url 'project_list' %}">Back to Project List</a>
     </div>
-</body>
-</html>
+{% endblock content %}

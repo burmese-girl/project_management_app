@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.contrib.auth import logout
+from django.contrib import messages 
+from django.contrib.auth import (
+    logout,
+    views as auth_views
+)
 from django.contrib.auth.decorators import login_required
 from ..forms.user_forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+
 
 def register(request):
     if request.user.is_authenticated:
@@ -18,6 +22,14 @@ def register(request):
         else:
             form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
+
+class login_user(auth_views.LoginView):
+    template_name = 'users/login.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('dashboard')
+        return super().dispatch(request, *args, **kwargs)
 
 def logout_user(request):
     if request.user.is_authenticated:

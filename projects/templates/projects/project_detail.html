@@ -1,15 +1,12 @@
 <!-- templates/projects/project_detail.html -->
+{% extends 'base.html' %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ project.name }}</title>
-    <link rel="stylesheet" href="{% static 'css/project_detail.css' %}">
-</head>
-<body>
+{% block page_title %} <title>{{project.name}}</title> {% endblock page_title %}
+
+{% block extra_resources %} <link rel="stylesheet" href="{% static 'css/project_detail.css' %}"> {% endblock extra_resources %}
+
+{% block content %}
     <div class="container">
         <h1>{{ project.name }}</h1>
 
@@ -45,5 +42,4 @@
 
         <a href="{% url 'project_list' %}">Back to Project List</a>
     </div>
-</body>
-</html>
+{% endblock content%}

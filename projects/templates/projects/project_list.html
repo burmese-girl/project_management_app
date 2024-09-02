@@ -1,15 +1,10 @@
 <!-- templates/projects/project_list.html -->
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project List</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+
+{% block page_title %} <title>Project List</title> {% endblock page_title %}
+
+{% block content %}
     <div class="container">
         <h1>Project List</h1>
 
@@ -43,5 +38,4 @@
         </table>
         <a href="{% url 'dashboard' %}">Back to Home</a>
     </div>
-</body>
-</html>
+{% endblock content %}
