@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    {% load widget_tweaks %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link rel="stylesheet" href="{% static 'css/users.css' %}">
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
 
-</head>
-<body>
+{% block page_title %} <title>Login</title> {% endblock page_title %}
+
+{% block extra_resources %} <link rel="stylesheet" href="{% static 'css/users.css' %}"> {% endblock extra_resources %}
+
+{% block content %}
     <div class="container">
         <div class="profile_section">
             <img class="profile_image" src="{{ user.profile.profile_picture.url }}">
@@ -37,5 +34,4 @@
             <button class="submit-button" type="submit">Update</button>
         </form>
     </div>
-</body>
-</html>
+{% endblock content %}

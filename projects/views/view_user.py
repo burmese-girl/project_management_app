@@ -4,7 +4,8 @@ from django.contrib.auth import (
     logout,
     views as auth_views
 )
-from ..forms.user_forms import UserRegisterForm
+from django.contrib.auth.decorators import login_required
+from ..forms.user_forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
 
 def register(request):
