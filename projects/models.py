@@ -1,43 +1,36 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-
-STATUS_CHOICES = [
-    ('new', 'New'),
-    ('open', 'Open'),
-    ('fixed', 'Fixed'),
-    ('rejected', 'Rejected'),
-    ('in_progress', 'In Progress'),
-    ('closed', 'Closed'),
-    ('test_passed', 'Test Passed'),
-]
+from .constants import STATUS_CHOICES, PROJECT_ROLES
 
 class Project(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True,null=True)
     start_date = models.DateField(blank=True,null=True)
     end_date = models.DateField(blank=True,null=True)
+    team_members = models.ManyToManyField('TeamMember', related_name='projects')
 
     def __str__(self):
         return self.name
 
 class Task(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='tasks')
     title = models.CharField(max_length=255,blank=True,null=True)
     description = models.TextField(blank=True,null=True)
     due_date = models.DateField(blank=True,null=True,default=timezone.now)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
+    assignee = models.ForeignKey('TeamMember', on_delete=models.SET_NULL, null=True, blank=True, related_name='assigned_tasks')
 
     def __str__(self):
         return self.title
 
 class TeamMember(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255,blank=True,null=True)
-    role = models.CharField(max_length=100,blank=True,null=True)
+    # project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='team_members')
+    role = models.CharField(max_length=100, choices = PROJECT_ROLES, default= 'staff')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.user.username
     
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
