@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.views import View
 from ..models import Task, Project
 
@@ -18,6 +19,12 @@ class ProjectListView(LoginRequiredMixin, ListView):
     model = Project
     template_name = 'projects/project_list.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        current_user = self.request.user.username
+        context['projects'] = self.get_queryset().filter(team_members__user=User.objects.get(username=current_user))
+        return context
+
 class ProjectDetailView(LoginRequiredMixin, DetailView):
     model = Project
     template_name = 'projects/project_detail.html'
@@ -25,7 +32,7 @@ class ProjectDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['tasks'] = self.object.task_set.all()
+        context['tasks'] = self.object.tasks.all()
         return context
 
 class ProjectUpdateView(LoginRequiredMixin, View):

@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for project in object_list %}
+                {% for project in projects %}
                     <tr>
                         <td>{{ project.name }}</td>
                         <td>{{ project.description }}</td>
@@ -37,5 +37,6 @@
             </tbody>
         </table>
         <a href="{% url 'dashboard' %}">Back to Home</a>
+        <!-- <a href="{% url 'dashboard' %}">Add Project</a> -->
     </div>
 {% endblock content %}
