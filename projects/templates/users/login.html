@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    {% load widget_tweaks %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="{% static 'css/users.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block page_title %} <title>Login</title> {% endblock page_title %}
+
+{% block extra_resources %} <link rel="stylesheet" href="{% static 'css/users.css' %}"> {% endblock extra_resources %}
+
+{% block content %}
     <div class="container">
         <div class="form-container">
             <form action="" method="post">
@@ -26,5 +24,4 @@
             Already have an Account? <a class="" href="{% url 'register' %}">Sign Up Now</a>
         </small>
     </div>
-</body>
-</html>
+{% endblock content %}

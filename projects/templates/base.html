@@ -1,0 +1,35 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block page_title %} {% endblock page_title %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" rel="stylesheet" />
+    
+    {% block extra_resources %} {% endblock extra_resources %}
+</head>
+<body>
+    {% block content %} {% endblock content %}
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" style="text-decoration: none; background-color: none;"><span class="material-symbols-sharp"
+            style = "
+                position: absolute;
+                top: 2rem;
+                right: 4rem;
+                color: black;
+                cursor: pointer;
+            "
+            title="Logout"
+            >
+                logout
+            </span></a>
+    {% endif %}
+</body>
+</html>

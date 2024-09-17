@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Project</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block page_title %} <title>Edit Project</title> {% endblock page_title %}
+
+{% block content %}
     <div class="container">
         <h1>Edit Project</h1>
 
@@ -23,16 +18,15 @@
             </div>
             <div>
                 <label for="start_date">Start Date:</label>
-                <input type="date" id="start_date" name="start_date" value="{{ project.start_date|date:'Y-m-d' }}">
+                <input type="date" id="start_date" name="start_date" value="{{ project.start_date|date:'Y-m-d' }}" required>
             </div>
             <div>
                 <label for="end_date">End Date:</label>
-                <input type="date" id="end_date" name="end_date" value="{{ project.end_date|date:'Y-m-d' }}">
+                <input type="date" id="end_date" name="end_date" value="{{ project.end_date|date:'Y-m-d' }}" required>
             </div>
             <button class="save-button" type="submit">Save</button>
         </form>
 
         <a href="{% url 'project_list' %}">Back to Project List</a>
     </div>
-</body>
-</html>
+{% endblock content %}
