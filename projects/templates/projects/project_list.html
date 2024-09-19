@@ -20,14 +20,16 @@
                 </tr>
             </thead>
             <tbody>
-                {% for project in projects %}
+                {% for project, edit_permission in project_context %}
                     <tr>
                         <td>{{ project.name }}</td>
                         <td>{{ project.description }}</td>
                         <td>{{ project.start_date }}</td>
                         <td>{{ project.end_date }}</td>
                         <td><a href="{% url 'project_detail' project.pk %}">View</a></td>
-                        <td><a href="{% url 'project_update' project.pk %}" class="edit-btn">Edit</a></td>
+                        {% if edit_permission %}
+                            <td><a href="{% url 'project_update' project.pk %}" class="edit-btn">Edit</a></td>
+                        {% endif %}
                     </tr>
                 {% empty %}
                     <tr>

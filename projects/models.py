@@ -30,6 +30,12 @@ class TeamMember(models.Model):
 
     def __str__(self):
         return f'{self.user.username}-{self.role}'
+
+    def is_admin(self):
+        return self.role == 'admin'
+    
+    def is_manager(self):
+        return self.role == 'manager'
     
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
