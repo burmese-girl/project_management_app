@@ -22,6 +22,7 @@
                     <th>Description</th>
                     <th>Due Date</th>
                     <th>Status</th>
+                    <th>Assignee</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,10 +32,11 @@
                         <td>{{ task.description }}</td>
                         <td>{{ task.due_date }}</td>
                         <td>{{ task.status }}</td>
+                        <td>{{ task.assignee }}</td>
                     </tr>
                 {% empty %}
                     <tr>
-                        <td colspan="4">No tasks available for this project.</td>
+                        <td colspan="5">No tasks available for this project.</td>
                     </tr>
                 {% endfor %}
             </tbody>

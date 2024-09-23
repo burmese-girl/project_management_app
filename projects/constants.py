@@ -14,3 +14,9 @@ PROJECT_ROLES = [
     ('team lead', 'Team Lead'),
     ('staff', 'Staff')
 ]
+
+TASK_TYPES = [
+    ('task', 'Task'),
+    ('story', 'Story'),
+    ('bug', 'Bug')
+]
