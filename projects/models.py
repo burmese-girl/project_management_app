@@ -29,7 +29,7 @@ class TeamMember(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='team_memberships')
 
     def __str__(self):
-        return f'{self.user.username}-{self.role}'
+        return f'{self.user}-{self.role}'
 
     def is_admin(self):
         return self.role == 'admin'
